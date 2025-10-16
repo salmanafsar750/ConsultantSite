@@ -1,120 +1,172 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
-body {
+* {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: #111;
-  color: #fff;
-  overflow-x: hidden;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
-.glass-nav {
+body {
+  background: url('background.jpg') no-repeat center center/cover;
+  background-attachment: fixed;
+  color: #fff;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Dark overlay for background */
+.overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.65); /* darker effect */
+  z-index: -1;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 15px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  backdrop-filter: blur(12px);
-  background: rgba(255, 255, 255, 0.05);
-  padding: 15px 40px;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-  border-bottom: 1px solid rgba(255,255,255,0.2);
+  z-index: 1000;
 }
 
-.logo {
+/* LOGO */
+.logo-container {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
-.logo img {
+
+.logo-img {
   width: 45px;
   height: 45px;
-  filter: drop-shadow(0 0 8px gold);
+  border-radius: 10px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 5px #00aaff);
 }
-.logo h1 {
-  font-size: 1.4em;
+
+.logo-container h2 {
   color: gold;
+  font-size: 1.4rem;
   letter-spacing: 1px;
 }
 
-nav ul {
-  display: flex;
-  gap: 25px;
-  list-style: none;
-}
-nav a {
-  text-decoration: none;
-  color: #bbb;
-  transition: color 0.3s ease;
-}
-nav a:hover, nav .active {
-  color: gold;
-}
-
-.hero {
-  text-align: center;
-  padding: 120px 20px;
-  background: linear-gradient(145deg, #0d0d0d, #1a1a1a);
-}
-.hero h2 {
-  font-size: 2.5em;
-  color: gold;
-}
-.hero p {
-  max-width: 600px;
-  margin: 20px auto;
+.navbar nav a {
   color: #ccc;
-}
-.btn {
-  padding: 10px 25px;
-  border-radius: 25px;
-  background: gold;
-  color: #000;
   text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s;
-}
-.btn:hover {
-  background: #ffcc00;
+  margin-left: 25px;
+  font-weight: 500;
+  transition: color 0.3s, transform 0.3s;
 }
 
-.cards {
+.navbar nav a:hover,
+.navbar nav a.active {
+  color: #00aaff;
+  transform: translateY(-2px);
+}
+
+/* HERO SECTION */
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  padding: 80px 40px;
+  flex-direction: column;
 }
-.card-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
-  margin-top: 30px;
+
+.hero-content h1 {
+  font-size: 2.8rem;
+  color: #f9f9f9;
+  margin-bottom: 15px;
+  text-shadow: 0 0 20px #000;
+  animation: slideDown 1.5s ease;
 }
-.card {
-  padding: 25px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.1);
-  transition: transform 0.3s;
+
+.hero-content p {
+  color: #e0e0e0;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  animation: fadeIn 2s ease;
+  text-shadow: 0 0 10px #000;
 }
-.card:hover {
-  transform: translateY(-8px);
+
+.btn {
+  background: linear-gradient(90deg, #0077ff, gold);
+  border: none;
+  color: black;
+  padding: 12px 28px;
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px #00aaff;
+}
+
+/* CONTENT PAGES */
+.content {
+  padding: 120px 60px;
+  text-align: center;
+}
+
+.content h1 {
+  color: gold;
+  margin-bottom: 30px;
+  font-size: 2.2rem;
+  text-shadow: 0 0 8px #000;
+}
+
+.services-list {
+  list-style: none;
+  display: inline-block;
+  text-align: left;
+}
+
+.services-list li {
+  margin: 12px 0;
+  font-size: 1.1rem;
+  background: rgba(255, 255, 255, 0.07);
+  padding: 12px 22px;
+  border-radius: 12px;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.services-list li:hover {
+  background: rgba(0, 170, 255, 0.25);
+  transform: translateX(10px);
 }
 
 .footer {
   text-align: center;
   padding: 20px;
-  background: rgba(255,255,255,0.05);
-  border-top: 1px solid rgba(255,255,255,0.1);
+  margin-top: 50px;
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes slideDown {
+  from {transform: translateY(-50px); opacity: 0;}
+  to {transform: translateY(0); opacity: 1;}
 }
 
 .fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 1s forwards;
-}
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  animation: fadeIn 2s ease;
 }
